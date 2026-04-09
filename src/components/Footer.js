@@ -42,7 +42,9 @@ const Footer = () => {
                 <Linkedin size={20} />
               </a>
               <a
-                href="mailto:shoaiev126.wyb@gmail.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=shoaiev126.wyb@gmail.com"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="bg-secondary-800 p-2 rounded-lg text-secondary-300 hover:text-white hover:bg-primary-600 transition-all duration-300"
                 aria-label="Email"
               >

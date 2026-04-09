@@ -10,10 +10,26 @@ const Contact = () => {
           <div className="bg-white rounded-2xl border border-secondary-200 shadow-sm p-8">
             <h2 className="text-xl font-semibold text-secondary-900 mb-4">Get in Touch</h2>
             <div className="space-y-4 text-secondary-700">
-              <p className="flex items-center gap-2"><Mail size={18} className="text-primary-600" /> <a href="mailto:shoaiev126.wyb@gmail.com" className="hover:text-primary-700">shoaiev126.wyb@gmail.com</a></p>
-              <p className="flex items-center gap-2"><Phone size={18} className="text-primary-600" /> <a href="tel:+601151898593" className="hover:text-primary-700">+60 115-189-8593</a></p>
+              <p className="flex items-center gap-2">
+                <Mail size={18} className="text-primary-600" /> 
+                <a 
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=shoaiev126.wyb@gmail.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-primary-700"
+                >
+                  shoaiev126.wyb@gmail.com
+                </a>
+              </p>
+              <p className="flex items-center gap-2">
+                <Phone size={18} className="text-primary-600" /> 
+                <a href="tel:+601151898593" className="hover:text-primary-700">+60 115-189-8593</a>
+              </p>
               <p className="flex items-center gap-2"><MapPin size={18} className="text-primary-600" /> Kuala Lumpur, Malaysia</p>
-              <p className="flex items-center gap-2"><Linkedin size={18} className="text-primary-600" /> <a href="https://www.linkedin.com/in/waiyanbo-/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700">linkedin.com/in/waiyanbo-</a></p>
+              <p className="flex items-center gap-2">
+                <Linkedin size={18} className="text-primary-600" /> 
+                <a href="https://www.linkedin.com/in/waiyanbo-/" target="_blank" rel="noopener noreferrer" className="hover:text-primary-700">linkedin.com/in/waiyanbo-</a>
+              </p>
             </div>
           </div>
 

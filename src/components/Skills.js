@@ -4,15 +4,53 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'GRC and Compliance',
-      skills: ['Security Risk Assessment (SRA)', 'IT Governance', 'Data Loss Prevention (DLP)', 'Third-Party Risk Management (TPRM)']
+      skills: [
+        'Security Risk Assessment (SRA)', 
+        'IT Governance', 
+        'Data Loss Prevention (DLP)', 
+        'Third-Party Risk Management (TPRM)'
+      ]
     },
     {
       title: 'Networking',
-      skills: ['Cisco Routing and Switching', 'Packet Analysis (Wireshark)', 'Network Hardening']
+      skills: [
+        'Cisco Routing and Switching', 
+        'Packet Analysis (Wireshark)', 
+        'Network Hardening',
+        'VLAN & Network Infrastructure (LAN/WAN)',
+        'VPN & Remote Access',
+        'OSI Models & IEEE Standards'
+      ]
+    },
+    {
+      title: 'Systems Administration',
+      skills: [
+        'Windows Server Administration', 
+        'Active Directory (AD) Domain Services', 
+        'DNS & DHCP Management', 
+        'VMware Virtualization', 
+        'Server Roles (Web, FTP, Exchange)'
+      ]
+    },
+    {
+      title: 'Hardware & IT Support',
+      skills: [
+        'System Assembly & Upgrades', 
+        'Hardware Diagnostics & Troubleshooting', 
+        'Disaster Recovery Protocols', 
+        'OS Installation & Configuration'
+      ]
     },
     {
       title: 'Tools',
-      skills: ['Burp Suite', 'Tenable (Theory)', 'Microsoft 365 Security', 'Linux CLI']
+      skills: [
+        'Burp Suite', 
+        'Tenable (Theory)', 
+        'Microsoft 365 Security', 
+        'Linux CLI',
+        'Cisco Packet Tracer',
+        'GNS3'
+      ]
     }
   ];
 
@@ -20,13 +58,15 @@ const Skills = () => {
     <section className="py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="text-3xl font-bold text-secondary-900 mb-8">Technical Skills</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        {/* Updated grid to handle 5 categories cleanly across different screen sizes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skillCategories.map((category) => (
-            <div key={category.title} className="bg-white p-7 rounded-2xl border border-secondary-200 shadow-sm">
+            <div key={category.title} className="bg-white p-7 rounded-2xl border border-secondary-200 shadow-sm transition-shadow hover:shadow-md">
               <h2 className="text-xl font-semibold text-secondary-900 mb-4">{category.title}</h2>
               <div className="flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <span key={skill} className="px-3 py-1.5 bg-secondary-100 text-secondary-800 text-sm rounded-md">
+                  <span key={skill} className="px-3 py-1.5 bg-secondary-100 text-secondary-800 text-sm rounded-md font-medium border border-secondary-200/50">
                     {skill}
                   </span>
                 ))}
