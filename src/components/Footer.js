@@ -37,7 +37,7 @@ const Footer = () => {
           <div className="md:text-center">
             <h4 className="text-lg font-semibold text-white mb-4">Navigate</h4>
             <ul className="space-y-2">
-              {['about', 'experience', 'projects', 'skills', 'contact'].map((p) => (
+              {['about', 'experience', 'research', 'projects', 'skills', 'contact'].map((p) => (
                 <li key={p}>
                   <Link
                     to={`/${p}`}

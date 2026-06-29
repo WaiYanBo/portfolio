@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion } from 'framer-motion';
-import { Shield, HeartPulse, Github, ArrowUpRight, Code2, Layers } from 'lucide-react';
+import { Shield, Cpu, Github, ArrowUpRight, Code2, Layers } from 'lucide-react';
 
 const projects = [
   {
@@ -9,28 +9,28 @@ const projects = [
     icon: <Shield size={22} className="text-primary-600" />,
     accent: 'from-primary-500/20 to-primary-700/10',
     description:
-      'Developed a Python-based scanner to identify common web security weaknesses and improve compliance readiness.',
+      'A lightweight Dynamic Application Security Testing (DAST) tool built to give resource-constrained teams an accessible alternative to heavyweight scanners.',
     highlights: [
-      'Created scanning workflows focused on web application risk patterns.',
-      'Mapped findings into practical remediation recommendations.',
-      'Improved visibility of potential security gaps for project teams.',
+      'Automated payload injection and response analysis for SQLi, XSS, and server misconfigurations.',
+      'Custom rule-based detection algorithms over a Flask + BeautifulSoup pipeline.',
+      'Auto-generated remediation reports to guide secure development.',
     ],
-    tags: ['Python', 'Web Security', 'Vulnerability Analysis', 'Compliance'],
+    tags: ['Python', 'Flask', 'Web Security', 'DAST'],
     githubLink: 'https://github.com/Irrfan47/Web-Application-Vulnerability-Scanner',
   },
   {
-    title: 'Mental Health and Wellbeing System',
-    category: 'System Architecture',
-    icon: <HeartPulse size={22} className="text-primary-600" />,
+    title: 'Driver Monitoring via Edge Computing',
+    category: 'Systems Architecture',
+    icon: <Cpu size={22} className="text-primary-600" />,
     accent: 'from-secondary-400/20 to-primary-600/10',
     description:
-      'Architected a system for senior care with emphasis on accessibility, structured design, and privacy-aware data handling.',
+      'A directed study proposing a hybrid cloud–edge architecture for real-time Driver Monitoring Systems in intelligent transportation.',
     highlights: [
-      'Produced UML models covering key actors, flows, and modules.',
-      'Planned privacy design for handling sensitive user information.',
-      'Balanced functional requirements with security considerations.',
+      'Systematic literature review comparing existing DMS and edge architectures.',
+      'Identified latency and network-dependency gaps in cloud-only designs.',
+      'Synthesized findings into a scalable conceptual hybrid framework.',
     ],
-    tags: ['UML', 'System Design', 'Privacy Design', 'Senior Care'],
+    tags: ['Edge Computing', 'ITS', 'Architecture', 'Research'],
   },
 ];
 
@@ -166,9 +166,9 @@ const Projects = () => {
                     </div>
                   ) : (
                     <div className="mt-8 pt-5 border-t border-secondary-100 relative flex items-center justify-between">
-                      <span className="text-xs text-secondary-500 italic">Academic / architectural artifact</span>
+                      <span className="text-xs text-secondary-500 italic">Directed study · conceptual architecture</span>
                       <span className="text-[10px] font-mono uppercase tracking-widest text-secondary-400">
-                        Private
+                        Research
                       </span>
                     </div>
                   )}

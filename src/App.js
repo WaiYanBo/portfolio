@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
+import Research from './components/Research';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
@@ -11,11 +12,14 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import CursorSpotlight from './components/CursorSpotlight';
 import PageTransition from './components/PageTransition';
+import Preloader from './components/Preloader';
 
 function AppShell() {
   const location = useLocation();
   return (
     <div className="relative min-h-screen bg-secondary-50 font-sans text-secondary-900 selection:bg-primary-200 selection:text-primary-900 overflow-x-hidden">
+      <Preloader />
+      <div className="grain-overlay" aria-hidden="true" />
       <CursorSpotlight />
       <Navbar />
       <main className="pt-24 pb-14 relative">
@@ -24,6 +28,7 @@ function AppShell() {
             <Route path="/" element={<Hero />} />
             <Route path="/about" element={<About />} />
             <Route path="/experience" element={<Experience />} />
+            <Route path="/research" element={<Research />} />
             <Route path="/skills" element={<Skills />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />

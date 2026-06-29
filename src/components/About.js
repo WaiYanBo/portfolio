@@ -86,26 +86,22 @@ const About = () => {
                   Click to zoom
                 </span>
               </div>
-              <a
-                href="YOUR_GOOGLE_DRIVE_LINK_HERE"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 inline-flex items-center gap-1 text-sm font-medium text-primary-600 hover:text-primary-700 underline"
-              >
-                Download Official AIU 6th Convo Handbook (PDF)
-              </a>
+              <p className="mt-3 inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-widest text-primary-700">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary-500" />
+                First-Class Honours · Dean's List (6 Semesters)
+              </p>
             </div>
 
             <ul className="mt-4 space-y-2 text-secondary-700">
               <li className="flex items-start gap-2">
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0" />
-                Built a Python-based web vulnerability scanner to identify security risks and support
-                compliance checks.
+                Built a Python-based dynamic web vulnerability scanner (DAST) to detect SQLi, XSS, and server
+                misconfigurations with automated remediation reports.
               </li>
               <li className="flex items-start gap-2">
                 <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0" />
-                Architected a Mental Health and Wellbeing System for senior care with UML modeling and
-                privacy-first design.
+                Proposed a hybrid cloud–edge architecture for real-time Driver Monitoring Systems to reduce
+                latency in intelligent transportation contexts.
               </li>
             </ul>
           </motion.div>
@@ -162,12 +158,54 @@ const About = () => {
               <span className="w-9 h-9 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center">
                 <Users className="text-primary-600" size={18} />
               </span>
-              Leadership
+              Leadership & Volunteering
             </h3>
-            <p className="mt-3 text-secondary-700">
-              Event Unit Co-Representative, AIU Myanmar Student Association. Managed logistics, coordination,
-              and communication across student event teams.
-            </p>
+            <ul className="mt-4 space-y-4">
+              {[
+                {
+                  role: 'Event Management Co-Representative',
+                  org: 'AIU Myanmar Students Association',
+                  years: '2023 – 2024',
+                  detail:
+                    'Led planning and logistics for 7 major cultural events and a large-scale exhibition representing the Myanmar student body.',
+                },
+                {
+                  role: 'Volunteer Lecturer',
+                  org: 'Hope Project',
+                  years: '2023 – 2024',
+                  detail:
+                    'Taught foundational lessons to Rohingya refugee children, advancing UN SDG 4 (Quality Education).',
+                },
+                {
+                  role: 'Vice President',
+                  org: 'Foundation Students Club',
+                  years: '2021 – 2022',
+                  detail:
+                    'Co-directed student council initiatives and ran peer-mentorship programs with university administration.',
+                },
+                {
+                  role: 'Media Unit Member',
+                  org: 'AMSA',
+                  years: '2021 – 2022',
+                  detail:
+                    'Managed audiovisual operations — mixers, projectors, and broadcasts — for university-wide events.',
+                },
+              ].map((item) => (
+                <li
+                  key={item.role}
+                  className="group relative pl-4 border-l-2 border-secondary-200 hover:border-primary-500 transition-colors"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-x-3">
+                    <p className="font-medium text-secondary-800 group-hover:text-primary-700 transition-colors">
+                      {item.role}
+                    </p>
+                    <span className="text-[11px] font-mono text-secondary-400">{item.years}</span>
+                  </div>
+                  <p className="text-sm text-primary-700">{item.org}</p>
+                  <p className="text-sm text-secondary-600 mt-1">{item.detail}</p>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
       </div>

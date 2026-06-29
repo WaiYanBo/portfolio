@@ -34,13 +34,13 @@ const Experience = () => {
       id: 3,
       role: 'QA and Security Tester',
       company: 'IIB Tech Team',
-      date: 'Nov 2024 - Sep 2025',
+      date: 'Nov 2024 - Oct 2025',
       tag: 'Security QA',
       tagColor: 'bg-secondary-200 text-secondary-800 border-secondary-300',
       points: [
         'Identified OWASP Top 10 risks such as SQL injection and XSS with Burp Suite.',
         'Conducted security audits and protocol compliance testing with Postman.',
-        'Executed UAT and helped maintain 99.9% system uptime.',
+        'Executed UAT and helped maintain 99% system uptime.',
         'Prioritized vulnerabilities for developers using CVSS scoring.',
       ],
     },
@@ -95,7 +95,14 @@ const Experience = () => {
 
                   {/* Card */}
                   <div className={`pl-14 md:pl-0 md:w-1/2 ${leftAlign ? 'md:pr-12' : 'md:pl-12'}`}>
-                    <article className="group bg-white rounded-2xl border border-secondary-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-400 p-7 relative overflow-hidden">
+                    <article
+                      onMouseMove={(e) => {
+                        const r = e.currentTarget.getBoundingClientRect();
+                        e.currentTarget.style.setProperty('--mx', `${((e.clientX - r.left) / r.width) * 100}%`);
+                        e.currentTarget.style.setProperty('--my', `${((e.clientY - r.top) / r.height) * 100}%`);
+                      }}
+                      className="card-spotlight group bg-white rounded-2xl border border-secondary-200 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-400 p-7 relative overflow-hidden"
+                    >
                       <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                       <div className="relative">
                         <div className="flex flex-wrap items-center justify-between gap-3 mb-3">
