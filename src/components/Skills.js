@@ -7,6 +7,9 @@ import {
   Wrench,
   Boxes,
   Award,
+  Code2,
+  BadgeCheck,
+  Languages as LanguagesIcon,
 } from 'lucide-react';
 import { useInView } from '../hooks/useInView';
 
@@ -71,6 +74,30 @@ const skillCategories = [
       { name: 'GNS3', level: 76 },
     ],
   },
+  {
+    title: 'Programming & Development',
+    icon: Code2,
+    color: 'from-primary-600 to-primary-800',
+    skills: [
+      { name: 'Python', level: 85 },
+      { name: 'Flask', level: 78 },
+      { name: 'JavaScript', level: 74 },
+      { name: 'HTML & CSS', level: 82 },
+      { name: 'Java', level: 70 },
+      { name: 'C', level: 66 },
+    ],
+  },
+];
+
+const certifications = [
+  'Cisco CCNA',
+  'CompTIA Network+',
+  'CompTIA Security+',
+];
+
+const languages = [
+  { name: 'English', level: 'Professional Working' },
+  { name: 'Burmese', level: 'Native' },
 ];
 
 const SkillBar = ({ name, level, color, delay = 0 }) => {
@@ -197,6 +224,66 @@ const Skills = () => {
               </span>
             ))}
           </div>
+        </div>
+
+        {/* Certifications in progress + Languages */}
+        <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2 bg-white rounded-2xl border border-secondary-200 shadow-sm p-7"
+          >
+            <h2 className="text-lg font-semibold text-secondary-900 flex items-center gap-2 mb-5">
+              <span className="w-9 h-9 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center">
+                <BadgeCheck className="text-primary-600" size={18} />
+              </span>
+              Certifications in Progress
+            </h2>
+            <div className="grid sm:grid-cols-3 gap-3">
+              {certifications.map((cert) => (
+                <div
+                  key={cert}
+                  className="group relative overflow-hidden rounded-xl border border-secondary-200 bg-secondary-50 p-4 hover:border-primary-300 hover:bg-white transition-all duration-300"
+                >
+                  <p className="font-medium text-secondary-800 text-sm">{cert}</p>
+                  <div className="mt-3 flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-70 animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-600" />
+                    </span>
+                    <span className="text-[10px] font-mono uppercase tracking-widest text-primary-700">
+                      In Progress
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-60px' }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="bg-white rounded-2xl border border-secondary-200 shadow-sm p-7"
+          >
+            <h2 className="text-lg font-semibold text-secondary-900 flex items-center gap-2 mb-5">
+              <span className="w-9 h-9 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center">
+                <LanguagesIcon className="text-primary-600" size={18} />
+              </span>
+              Languages
+            </h2>
+            <div className="space-y-3">
+              {languages.map((lang) => (
+                <div key={lang.name} className="flex items-center justify-between">
+                  <span className="font-medium text-secondary-800">{lang.name}</span>
+                  <span className="text-xs font-mono text-secondary-500">{lang.level}</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X, FileText, ShieldCheck } from 'lucide-react';
 import { Link, NavLink } from 'react-router-dom';
+import Magnetic from './Magnetic';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ const Navbar = () => {
     { label: 'Home', to: '/' },
     { label: 'About', to: '/about' },
     { label: 'Experience', to: '/experience' },
+    { label: 'Research', to: '/research' },
     { label: 'Skills', to: '/skills' },
     { label: 'Projects', to: '/projects' },
     { label: 'Contact', to: '/contact' },
@@ -83,14 +85,16 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex items-center">
-            <a
-              href="/resume.pdf"
-              className="group relative flex items-center space-x-2 border border-primary-600 text-primary-600 px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-600 hover:text-white hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
-            >
-              <span className="absolute inset-0 bg-primary-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 -z-0"></span>
-              <FileText size={16} className="relative z-10" />
-              <span className="relative z-10">Resume</span>
-            </a>
+            <Magnetic strength={0.4}>
+              <a
+                href="/resume.pdf"
+                className="group relative flex items-center space-x-2 border border-primary-600 text-primary-600 px-4 py-2 rounded-full text-sm font-medium hover:text-white hover:shadow-lg transition-all duration-300 overflow-hidden"
+              >
+                <span className="absolute inset-0 bg-primary-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 -z-0"></span>
+                <FileText size={16} className="relative z-10" />
+                <span className="relative z-10">Resume</span>
+              </a>
+            </Magnetic>
           </div>
 
           <div className="md:hidden">

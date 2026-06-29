@@ -35,6 +35,7 @@ module.exports = {
       },
       fontFamily: {
         'sans': ['Inter', 'system-ui', 'sans-serif'],
+        'display': ['Sora', 'Inter', 'system-ui', 'sans-serif'],
         'mono': ['JetBrains Mono', 'monospace'],
       },
       animation: {
@@ -54,6 +55,10 @@ module.exports = {
         'marquee': 'marquee 30s linear infinite',
         'bounce-soft': 'bounceSoft 2.4s ease-in-out infinite',
         'grow-x': 'growX 1.2s cubic-bezier(0.16,1,0.3,1) forwards',
+        'grain': 'grain 8s steps(10) infinite',
+        'aurora': 'aurora 16s ease infinite',
+        'ring-spin': 'spin 22s linear infinite',
+        'dash': 'dash 2.5s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -109,6 +114,24 @@ module.exports = {
         growX: {
           '0%': { transform: 'scaleX(0)' },
           '100%': { transform: 'scaleX(1)' },
+        },
+        grain: {
+          '0%, 100%': { transform: 'translate(0, 0)' },
+          '10%': { transform: 'translate(-4%, -4%)' },
+          '30%': { transform: 'translate(3%, -6%)' },
+          '50%': { transform: 'translate(-5%, 5%)' },
+          '70%': { transform: 'translate(4%, 3%)' },
+          '90%': { transform: 'translate(-3%, 4%)' },
+        },
+        aurora: {
+          '0%, 100%': { transform: 'translate(0,0) rotate(0deg) scale(1)' },
+          '33%': { transform: 'translate(6%,-8%) rotate(40deg) scale(1.15)' },
+          '66%': { transform: 'translate(-6%,6%) rotate(-30deg) scale(0.95)' },
+        },
+        dash: {
+          '0%': { strokeDashoffset: '120' },
+          '50%': { strokeDashoffset: '0' },
+          '100%': { strokeDashoffset: '-120' },
         },
       },
       backgroundImage: {
