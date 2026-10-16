@@ -77,7 +77,7 @@ const Footer = () => {
               </a>
             </div>
             <p className="text-secondary-500 text-sm">
-              Petaling Jaya, Selangor
+              Kuala Lumpur
               <br />
               Malaysia
             </p>
@@ -89,7 +89,7 @@ const Footer = () => {
             &copy; {currentYear} Wai Yan Bo. All rights reserved.
           </p>
           <p className="text-secondary-600 text-sm font-mono tracking-wider">
-            Cybersecurity GRC Portfolio • v2.0
+            IT Support / GRC / Application Security
           </p>
         </div>
       </div>

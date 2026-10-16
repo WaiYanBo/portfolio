@@ -22,7 +22,7 @@ const research = [
     stack: ['Python', 'Flask', 'Requests', 'BeautifulSoup', 'JavaScript'],
     phases: {
       Motivation:
-        'Investigated the complexity and inefficiency of existing vulnerability tools such as Burp Suite to provide an accessible cybersecurity solution for SMEs that lack dedicated security resources.',
+        'Investigated the complexity and inefficiency of existing vulnerability tools such as Burp Suite to provide an accessible cybersecurity solution for developers who lack dedicated security resources.',
       Design:
         'Designed and implemented a Dynamic Application Security Testing (DAST) web application using Python, Flask, Requests, BeautifulSoup, and a JavaScript front end.',
       Methodology:
@@ -109,6 +109,8 @@ const ResearchCard = ({ item, index }) => {
             <button
               key={tab}
               onClick={() => setActive(tab)}
+              aria-pressed={active === tab}
+              aria-controls={`${item.id}-phase`}
               className={`relative px-3 py-1.5 text-xs font-semibold rounded-full border transition-all duration-300 ${
                 active === tab
                   ? 'bg-secondary-900 text-white border-secondary-900 shadow-sm'
@@ -120,7 +122,7 @@ const ResearchCard = ({ item, index }) => {
           ))}
         </div>
 
-        <div className="mt-4 min-h-[7.5rem] rounded-xl bg-secondary-50 border border-secondary-100 p-4">
+        <div id={`${item.id}-phase`} aria-live="polite" className="mt-4 min-h-[7.5rem] rounded-xl bg-secondary-50 border border-secondary-100 p-4">
           <AnimatePresence mode="wait">
             <motion.p
               key={active}

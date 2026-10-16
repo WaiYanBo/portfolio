@@ -12,17 +12,17 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import CursorSpotlight from './components/CursorSpotlight';
 import PageTransition from './components/PageTransition';
-import Preloader from './components/Preloader';
+import { MotionConfig } from 'framer-motion';
 
 function AppShell() {
   const location = useLocation();
   return (
     <div className="relative min-h-screen bg-secondary-50 font-sans text-secondary-900 selection:bg-primary-200 selection:text-primary-900 overflow-x-hidden">
-      <Preloader />
+      <a className="skip-link" href="#main-content">Skip to content</a>
       <div className="grain-overlay" aria-hidden="true" />
       <CursorSpotlight />
       <Navbar />
-      <main className="pt-24 pb-14 relative">
+      <main id="main-content" tabIndex={-1} className="pt-24 pb-14 relative">
         <PageTransition>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Hero />} />
@@ -44,9 +44,9 @@ function AppShell() {
 
 function App() {
   return (
-    <BrowserRouter>
+    <MotionConfig reducedMotion="user"><BrowserRouter>
       <AppShell />
-    </BrowserRouter>
+    </BrowserRouter></MotionConfig>
   );
 }
 
