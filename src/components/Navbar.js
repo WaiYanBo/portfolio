@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { Menu, X, FileText, ShieldCheck } from 'lucide-react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import Magnetic from './Magnetic';
 
 const Navbar = () => {
+  const location = useLocation();
+  useEffect(() => { setIsOpen(false); }, [location.pathname]);
+  useEffect(() => {
+    const close = e => { if (e.key === "Escape") setIsOpen(false); };
+    window.addEventListener("keydown", close);
+    return () => window.removeEventListener("keydown", close);
+  }, []);
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -57,7 +64,7 @@ const Navbar = () => {
             </span>
           </Link>
 
-          <div className="hidden md:block">
+          <div className="hidden lg:block">
             <div className="ml-10 flex items-baseline space-x-1">
               {navItems.map((item) => (
                 <NavLink
@@ -84,10 +91,10 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <Magnetic strength={0.4}>
               <a
-                href="/resume.pdf"
+                href="/resume.pdf" download="Wai-Yan-Bo-CV.pdf"
                 className="group relative flex items-center space-x-2 border border-primary-600 text-primary-600 px-4 py-2 rounded-full text-sm font-medium hover:text-white hover:shadow-lg transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-primary-600 scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300 -z-0"></span>
@@ -97,11 +104,13 @@ const Navbar = () => {
             </Magnetic>
           </div>
 
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-secondary-800 hover:text-primary-600 focus:outline-none p-2 transition-colors"
-              aria-label="Toggle menu"
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
               <span className="relative w-6 h-6 inline-block">
                 <Menu
@@ -125,13 +134,15 @@ const Navbar = () => {
       {/* Scroll progress bar */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-transparent">
         <div
-          className="h-full bg-gradient-to-r from-primary-400 via-primary-600 to-primary-400 bg-[length:200%_100%] animate-gradient-x transition-[width] duration-75"
-          style={{ width: `${progress}%` }}
+          className="h-full bg-gradient-to-r from-primary-400 via-primary-600 to-primary-400 bg-[length:200%_100%] "
+          style={{ transform: `scaleX(${progress / 100})`, transformOrigin: "left" }}
         />
       </div>
 
       <div
-        className={`md:hidden overflow-hidden transition-all duration-300 ${
+        id="mobile-menu"
+        hidden={!isOpen}
+        className={`lg:hidden overflow-hidden transition-all duration-300 ${
           isOpen ? 'max-h-[26rem] opacity-100' : 'max-h-0 opacity-0'
         } bg-secondary-50 border-t border-secondary-200`}
       >
@@ -155,7 +166,7 @@ const Navbar = () => {
           ))}
           <div className="pt-3">
             <a
-              href="/resume.pdf"
+              href="/resume.pdf" download="Wai-Yan-Bo-CV.pdf"
               className="inline-flex items-center space-x-2 bg-primary-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-primary-700 transition-all duration-300 shadow-sm"
             >
               <FileText size={16} />

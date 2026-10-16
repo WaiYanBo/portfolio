@@ -16,6 +16,7 @@ const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sent, setSent] = useState(false);
   const [copied, setCopied] = useState('');
+  const [notice, setNotice] = useState('');
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -38,9 +39,10 @@ const Contact = () => {
     try {
       await navigator.clipboard.writeText(text);
       setCopied(key);
+      setNotice(`${key} copied to clipboard.`);
       setTimeout(() => setCopied(''), 1800);
     } catch {
-      /* ignore */
+      setNotice('Copy is unavailable. Please select and copy the contact text.');
     }
   };
 
@@ -69,7 +71,7 @@ const Contact = () => {
           </h1>
           <p className="mt-3 text-secondary-600 max-w-2xl">
             Whether you have an opportunity, a collaboration idea, or just want to talk security — drop a line
-            and I'll get back within 24 hours.
+            to start a conversation.
           </p>
         </motion.div>
 
@@ -83,6 +85,7 @@ const Contact = () => {
             className="bg-white rounded-2xl border border-secondary-200 shadow-sm p-8 hover:shadow-lg transition-shadow"
           >
             <h2 className="text-xl font-semibold text-secondary-900 mb-5">Get in Touch</h2>
+            <p role="status" className="text-sm text-primary-700 mb-3">{notice}</p>
             <div className="space-y-3">
               {[
                 {
@@ -147,7 +150,7 @@ const Contact = () => {
                   {copy && (
                     <button
                       onClick={() => copyToClipboard(key, copy)}
-                      className="text-secondary-400 hover:text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity p-1.5 rounded"
+                      className="text-secondary-400 hover:text-primary-600 opacity-100 transition-opacity p-3 rounded"
                       aria-label={`Copy ${label}`}
                       title="Copy"
                     >
@@ -218,7 +221,7 @@ const Contact = () => {
             className="relative bg-white rounded-2xl border border-secondary-200 shadow-sm p-8 hover:shadow-lg transition-shadow overflow-hidden"
           >
             <div className="absolute -top-24 -right-24 w-48 h-48 rounded-full bg-primary-200/40 blur-3xl" />
-            <h2 className="relative text-xl font-semibold text-secondary-900 mb-1">Send a Message</h2>
+            <h2 className="relative text-xl font-semibold text-secondary-900 mb-1">Compose a Message</h2>
             <p className="relative text-sm text-secondary-600 mb-5">
               Your message opens in Gmail with the details pre-filled.
             </p>
@@ -282,12 +285,12 @@ const Contact = () => {
                 {sent ? (
                   <>
                     <CheckCircle2 size={18} />
-                    Opened in Gmail
+                    Gmail requested — send your draft there
                   </>
                 ) : (
                   <>
                     <Send size={18} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                    Send Message
+                    Compose in Gmail
                   </>
                 )}
               </button>

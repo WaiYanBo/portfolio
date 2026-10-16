@@ -39,7 +39,7 @@ const TiltCard = ({ children, className = '' }) => {
 
   const handleMove = (e) => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
     const rect = el.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width;
     const y = (e.clientY - rect.top) / rect.height;
@@ -52,7 +52,7 @@ const TiltCard = ({ children, className = '' }) => {
 
   const handleLeave = () => {
     const el = ref.current;
-    if (!el) return;
+    if (!el || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
     el.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
   };
 
@@ -92,7 +92,7 @@ const Projects = () => {
           </h1>
           <p className="mt-3 text-secondary-600 max-w-2xl">
             Selected projects that demonstrate end-to-end thinking — from risk modeling and scanner design to
-            privacy-led system architecture.
+            conceptual cloud–edge system architecture.
           </p>
         </motion.div>
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, Award, Users, X, ZoomIn, ZoomOut, RefreshCw, BookOpen, Sparkles } from 'lucide-react';
 
@@ -6,6 +6,16 @@ const About = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
+  const dialog = useRef(null);
+  useEffect(() => {
+    if (!selectedImage || !dialog.current) return;
+    const previous = document.activeElement;
+    dialog.current.showModal();
+    const overflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => { document.body.style.overflow = overflow; previous?.focus(); };
+  }, [selectedImage]);
+  const imageKey = (e, src) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSelectedImage(src); } };
   const closeModal = () => {
     setSelectedImage(null);
     setZoomLevel(1);
@@ -62,7 +72,7 @@ const About = () => {
               Education & Projects
             </h2>
             <p className="mt-4 text-secondary-700 font-medium">
-              Bachelor of Computer Science (Cybersecurity), Albukhary International University (Graduated Dec
+              Bachelor of Computer Science (Cybersecurity) (Honours), Albukhary International University (Graduated Dec
               2025)
             </p>
             <p className="text-secondary-600 mb-4">
@@ -78,6 +88,7 @@ const About = () => {
                 <img
                   src="/FirstClassHonours.webp"
                   alt="First Class Honours Verification"
+                  role="button" tabIndex={0} onKeyDown={e => imageKey(e, '/FirstClassHonours.webp')}
                   onClick={() => setSelectedImage('/FirstClassHonours.webp')}
                   className="w-full max-w-sm rounded-lg border border-secondary-200 shadow-sm cursor-pointer hover:opacity-95 transition-all duration-500 group-hover:scale-[1.02]"
                   title="Click to view full screen and zoom"
@@ -124,11 +135,12 @@ const About = () => {
             <div className="mt-5 space-y-6">
               <div className="group">
                 <p className="font-medium text-secondary-800 mb-3 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500" /> Enterprise Networking
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500" /> Enterprise Networking · M.S.C Education Centre · March 2020
                 </p>
                 <img
                   src="/ENC.webp"
                   alt="Enterprise Networking Certificate"
+                  role="button" tabIndex={0} onKeyDown={e => imageKey(e, '/ENC.webp')}
                   onClick={() => setSelectedImage('/ENC.webp')}
                   className="w-full max-w-sm rounded-lg border border-secondary-200 shadow-sm cursor-pointer hover:opacity-95 hover:shadow-md transition-all group-hover:scale-[1.02]"
                   title="Click to view full screen and zoom"
@@ -137,7 +149,7 @@ const About = () => {
 
               <div>
                 <p className="font-medium text-secondary-800 mb-3 flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500" /> Hardware and Network Engineering
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary-500" /> Hardware and Network Engineering · M.S.C Education Centre · November 2019
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {['/FrontHW.webp', '/BackHW.webp'].map((src) => (
@@ -145,6 +157,7 @@ const About = () => {
                       key={src}
                       src={src}
                       alt="Hardware and Network Engineering Certificate"
+                      role="button" tabIndex={0} onKeyDown={e => imageKey(e, src)}
                       onClick={() => setSelectedImage(src)}
                       className="w-full rounded-lg border border-secondary-200 shadow-sm cursor-pointer hover:opacity-95 hover:shadow-md hover:scale-[1.02] transition-all"
                       title="Click to view full screen and zoom"
@@ -154,6 +167,10 @@ const About = () => {
               </div>
             </div>
 
+            <div className="mt-8 border-t border-secondary-200 pt-6">
+              <h3 className="font-semibold">Academic engagement</h3>
+              <p className="mt-2 text-sm text-secondary-700">Participant, Symposium on Tech Transformation: AI’s Role in Shaping the Future of Muslim Youth. Universiti Teknologi MARA (UiTM), Arau, Malaysia · June 2024.</p>
+            </div>
             <h3 className="mt-8 text-xl font-semibold text-secondary-900 flex items-center gap-2">
               <span className="w-9 h-9 rounded-xl bg-primary-50 border border-primary-100 flex items-center justify-center">
                 <Users className="text-primary-600" size={18} />
@@ -178,10 +195,10 @@ const About = () => {
                 },
                 {
                   role: 'Vice President',
-                  org: 'Foundation Students Club',
+                  org: 'Centre for Foundation Studies',
                   years: '2021 – 2022',
                   detail:
-                    'Co-directed student council initiatives and ran peer-mentorship programs with university administration.',
+                    'Co-directed student council initiatives and advocated for student academic and welfare needs with university administration.',
                 },
                 {
                   role: 'Media Unit Member',
@@ -211,8 +228,8 @@ const About = () => {
       </div>
 
       {selectedImage && (
-        <div
-          className="fixed inset-0 z-50 flex flex-col bg-secondary-900/95 backdrop-blur-sm animate-fade-in"
+        <dialog ref={dialog} onCancel={closeModal} aria-label="Certificate preview"
+          className="m-0 max-w-none max-h-none w-screen h-[100dvh] fixed inset-0 z-50 flex flex-col bg-secondary-900/95 backdrop-blur-sm animate-fade-in"
           onClick={closeModal}
         >
           <div
@@ -268,7 +285,7 @@ const About = () => {
               />
             </div>
           </div>
-        </div>
+        </dialog>
       )}
     </section>
   );
